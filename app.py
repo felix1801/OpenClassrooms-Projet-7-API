@@ -14,9 +14,9 @@ def predict():
     data = request.json
     score, probability = predict_score(data)
     return jsonify({
-        'score': score,
-        'probability': probability
+        'score': int(score),
+        'probability': float(probability)
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8001)
