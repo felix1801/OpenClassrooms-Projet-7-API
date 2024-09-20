@@ -1,7 +1,7 @@
 import mlflow.pyfunc
 import numpy as np
 
-THRESHOLD = 0.7
+THRESHOLD = 0.7 # charger le seuil en même temps que je charge le modèle avec mlflow
 
 # # Dans une vraie application, vous chargeriez ici votre modèle entraîné
 # model_uri = "path/to/your/mlflow/model"  # Replace with your model URI
