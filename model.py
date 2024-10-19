@@ -1,16 +1,30 @@
 import mlflow.pyfunc
 import numpy as np
+import os
 
-THRESHOLD = 0.7 # charger le seuil en même temps que je charge le modèle avec mlflow
+# THRESHOLD = 0.7 # charger le seuil en même temps que je charge le modèle avec mlflow
 
 # # Dans une vraie application, vous chargeriez ici votre modèle entraîné
-# model_uri = "path/to/your/mlflow/model"  # Replace with your model URI
-# model = mlflow.pyfunc.load_model(model_uri)
+# model_uri = os.path.join("..", "modeling", "data", "06_models", "model.pkl")  # Replace with your model URI
+
+# Get the absolute path of your project directory
+project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Construct the absolute path to your model
+model_path = os.path.join(project_dir, "modeling", "data", "06_models", "model.pkl")
+# Convert the path to a URI
+model_uri = "file:///" + model_path.replace("\\", "/")
+print(model_uri)
+print(os.getcwd())
+model = mlflow.pyfunc.load_model(model_uri)
+
+print(model.metadata)
+THRESHOLD = model.metadata.get_metric("optimal_threshold")
+print(THRESHOLD)
 
 # Ou load avec pickle
-import pickle
-with open('models/model.pkl', 'rb') as f:
-    model = pickle.load(f)
+# import pickle
+# with open('models/model.pkl', 'rb') as f:
+#     model = pickle.load(f)
 
 def predict_score(data):
     # Ici, vous utiliseriez normalement votre modèle pour faire la prédiction
