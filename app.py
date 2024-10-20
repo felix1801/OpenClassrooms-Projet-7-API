@@ -12,10 +12,9 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
-    score, probability = predict_score(data)
+    score = predict_score(data)
     return jsonify({
         'score': int(score),
-        'probability': float(probability)
     })
 
 if __name__ == '__main__':
