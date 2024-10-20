@@ -11,10 +11,10 @@ app = Flask(__name__)
 # Defines a route /predict that accepts POST requests and returns a JSON object with the score and probability
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
-    score = predict_score(data)
+    data_list = request.json
+    scores = predict_score(data_list)
     return jsonify({
-        'score': int(score),
+        'scores': scores.tolist(),  # Convert numpy array to list for JSON serialization
     })
 
 if __name__ == '__main__':

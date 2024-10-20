@@ -21,9 +21,8 @@ loaded_model = mlflow.sklearn.load_model(model_path)
 print(f"Modèle chargé depuis : {model_path}")
 
 
-def predict_score(data):
-    # reshape request json data to fit into my model input and predict
-    data = np.array([list(data.values())])
-    prediction = loaded_model.predict(data)
-
-    return prediction
+def predict_score(data_list):
+    # Convert list of dictionaries to a numpy array
+    data_array = np.array([list(data.values()) for data in data_list])
+    predictions = loaded_model.predict(data_array)
+    return predictions
