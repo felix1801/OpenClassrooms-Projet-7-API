@@ -2,13 +2,17 @@ import numpy as np
 import os
 import sys
 
-project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
+# Get the absolute path to the project root
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-# Ajouter le chemin du dossier 'modeling' au PYTHONPATH
+# Add project root to Python path
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+# Add modeling directory to Python path
 modeling_path = os.path.join(project_root, 'modeling')
 if modeling_path not in sys.path:
     sys.path.append(modeling_path)
-
 
 import mlflow
 from pipelines.utils.custom_threshold_model import CustomThresholdModel

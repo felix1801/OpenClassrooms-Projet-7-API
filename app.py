@@ -12,9 +12,10 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict():
     data_list = request.json
-    scores = predict_score(data_list)
+    scores, probas = predict_score(data_list)
     return jsonify({
         'scores': scores.tolist(),  # Convert numpy array to list for JSON serialization
+        'probas': probas.tolist()
     })
 
 if __name__ == '__main__':
