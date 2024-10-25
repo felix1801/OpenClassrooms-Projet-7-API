@@ -1,7 +1,9 @@
 import numpy as np
 import os
-import sys
 
+# Local version
+"""
+import sys
 # Get the absolute path to the project root
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -18,6 +20,12 @@ import mlflow
 from pipelines.utils.custom_threshold_model import CustomThresholdModel
 
 model_path = os.path.join(os.path.expanduser("~"), "Desktop", "Ecole", "OpenClassrooms-Projet-7", "modeling", "data", "06_models", "latest")
+"""
+
+# Remote version
+model_path = os.path.join(os.getcwd(), "models", "latest")
+
+
 
 # Charger le modèle
 loaded_model = mlflow.sklearn.load_model(model_path)
