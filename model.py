@@ -47,7 +47,7 @@ model_path = os.path.join(os.path.expanduser("~"), "Desktop", "Ecole", "OpenClas
 
 # Remote version
 model_path = os.path.join(os.getcwd(), "models", "latest")
-
+print(model_path)
 
 # Charger le modèle
 loaded_model = mlflow.sklearn.load_model(model_path)

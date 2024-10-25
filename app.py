@@ -1,17 +1,13 @@
 from flask import Flask, request, jsonify
-# from flask_cors import CORS # Handle Cross Origin Resource Sharing and Request 
 from model import predict_score
 
 # Initialize the Flask application
 app = Flask(__name__)
 
-# Enable CORS to allow requests from the frontend to the backend server 
-# CORS(app)
-
 # Defines a route /predict that accepts POST requests and returns a JSON object with the score and probability
 @app.route('/predict', methods=['POST'])
 def predict():
-    # vérifier que c'est bien le bon type de données (dict) avec les dataclass de pydantic
+    # TO DO: vérifier que c'est bien le bon type de données (dict) avec les dataclass de pydantic
 
     data_list = request.json
     scores, probas = predict_score(data_list)
