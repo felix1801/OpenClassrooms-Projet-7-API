@@ -3,3 +3,13 @@ gunicorn==20.1.0
 numpy==1.26.4
 scikit-learn==1.5.1
 mlflow==2.15.1
+
+cffi==1.17.0
+cloudpickle==3.0.0
+defusedxml==0.7.1
+lightgbm==4.5.0
+matplotlib==3.9.2
+pandas==2.2.2
+psutil==6.0.0
+pyarrow==15.0.2
+scipy==1.14.0
