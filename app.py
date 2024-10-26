@@ -8,7 +8,6 @@ app = Flask(__name__)
 # Defines a route /predict that accepts POST requests and returns a JSON object with the score and probability
 @app.route('/predict', methods=['POST'])
 def predict():
-    # TO DO: vérifier que c'est bien le bon type de données (dict) avec les dataclass de pydantic
 
     data_list = request.json
     scores, probas = predict_score(data_list)
@@ -20,3 +19,8 @@ def predict():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", debug=True, port=port)
+
+# TO DO: 
+# - [ ] En entrée dans l'API, vérifier que c'est bien le bon type de données (dict) avec les dataclass de pydantic
+# - [ ] Réaliser 2 tests unitaires
+# - [ ] Déployer avec GitHub Action en réalisant les tests unitaires
