@@ -21,6 +21,6 @@ if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True, port=port)
 
 # TO DO: 
-# - [ ] En entrée dans l'API, vérifier que c'est bien le bon type de données (dict) avec les dataclass de pydantic
 # - [ ] Réaliser 2 tests unitaires
 # - [ ] Déployer avec GitHub Action en réalisant les tests unitaires
+# - [ ] En entrée dans l'API, vérifier que c'est bien le bon type de données (dict et vars dedans du bon type?) avec les dataclass de pydantic
