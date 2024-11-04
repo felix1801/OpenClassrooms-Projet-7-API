@@ -1,6 +1,7 @@
+from model import predict_score, InputData
 from flask import Flask, request, jsonify
-from model import predict_score
 import os
+from pydantic import ValidationError
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -8,8 +9,11 @@ app = Flask(__name__)
 # Defines a route /predict that accepts POST requests and returns a JSON object with the score and probability
 @app.route('/predict', methods=['POST'])
 def predict():
+    try:
+        data_list = [InputData(**data) for data in request.json]
+    except ValidationError as e:
+        return jsonify({'error': str(e)}), 400
 
-    data_list = request.json
     scores, probas = predict_score(data_list)
     return jsonify({
         'scores': scores.tolist(),  # Convert numpy array to list for JSON serialization
