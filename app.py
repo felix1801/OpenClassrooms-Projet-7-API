@@ -26,5 +26,5 @@ if __name__ == '__main__':
 
 # TO DO: 
 # - [X] Réaliser 2 tests unitaires
-# - [ ] Déployer avec GitHub Action en réalisant les tests unitaires
+# - [X] Déployer avec GitHub Action en réalisant les tests unitaires
 # - [X] En entrée dans l'API, vérifier que c'est bien le bon type de données (dict et vars dedans du bon type?) avec les dataclass de pydantic
