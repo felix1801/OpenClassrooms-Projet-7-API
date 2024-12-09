@@ -1,10 +1,9 @@
 import mlflow
 import numpy as np
 import os
-
 from pydantic import BaseModel, ConfigDict
 
-from sklearn.base import BaseEstimator, ClassifierMixin
+from custom_threshold_model import CustomThresholdModel
 
 class InputData(BaseModel):
     PAYMENT_RATE: float
@@ -18,26 +17,6 @@ class InputData(BaseModel):
     DAYS_LAST_PHONE_CHANGE: float
     REGION_POPULATION_RELATIVE: float
     ACTIVE_DAYS_CREDIT_UPDATE_MEAN: float
-
-class CustomThresholdModel(BaseEstimator, ClassifierMixin):
-    def __init__(self, model, threshold):
-        self.model = model
-        self.threshold = threshold
-
-    def fit(self, X, y):
-        # Pas besoin de ré-entraîner le modèle
-        return self
-
-    def predict(self, X):
-        probas = self.model.predict_proba(X)[:, 1]
-        scores = self.predict_score(X, probas)
-        return scores, probas
-    
-    def predict_score(self, X, probas):
-        return (probas >= self.threshold).astype(int)
-
-    def predict_proba(self, X):
-        return self.model.predict_proba(X)
 
 model_path = os.path.join(os.getcwd(), "models", "latest")
 
