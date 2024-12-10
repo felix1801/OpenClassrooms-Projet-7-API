@@ -6,17 +6,17 @@ from pydantic import BaseModel, ConfigDict
 from custom_threshold_model import CustomThresholdModel
 
 class InputData(BaseModel):
-    PAYMENT_RATE: float
-    EXT_SOURCE_3: float
-    EXT_SOURCE_2: float
-    DAYS_BIRTH: float
+    AMT_ANNUITY: float
+    AMT_CREDIT: float
+    AMT_GOODS_PRICE: float
+    CODE_GENDER: int
+    DAYS_EMPLOYED: float
     EXT_SOURCE_1: float
-    DAYS_EMPLOYED_PERC: float
-    ANNUITY_INCOME_PERC: float
-    INSTAL_DBD_MEAN: float
-    DAYS_LAST_PHONE_CHANGE: float
-    REGION_POPULATION_RELATIVE: float
-    ACTIVE_DAYS_CREDIT_UPDATE_MEAN: float
+    EXT_SOURCE_2: float
+    EXT_SOURCE_3: float
+    NAME_EDUCATION_TYPE_Highereducation: bool
+    OWN_CAR_AGE: float
+    PAYMENT_RATE: float
 
 model_path = os.path.join(os.getcwd(), "models", "latest")
 

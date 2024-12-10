@@ -10,17 +10,17 @@ def client():
 
 def test_prediction_range(client):
     data = json.dumps([{
-        'PAYMENT_RATE': 0, 
-        'EXT_SOURCE_3': 0, 
-        'EXT_SOURCE_2': 0, 
-        'DAYS_BIRTH': 0, 
-        'EXT_SOURCE_1': 0, 
-        'DAYS_EMPLOYED_PERC': 0, 
-        'ANNUITY_INCOME_PERC': 0, 
-        'INSTAL_DBD_MEAN': 0, 
-        'DAYS_LAST_PHONE_CHANGE': 0, 
-        'REGION_POPULATION_RELATIVE': 0, 
-        'ACTIVE_DAYS_CREDIT_UPDATE_MEAN': 0
+        'AMT_ANNUITY': 0,
+        'AMT_CREDIT': 0,
+        'AMT_GOODS_PRICE': 0,
+        'CODE_GENDER': 0,
+        'DAYS_EMPLOYED': 0,
+        'EXT_SOURCE_1': 0,
+        'EXT_SOURCE_2': 0,
+        'EXT_SOURCE_3': 0,
+        'NAME_EDUCATION_TYPE_Highereducation': 0,
+        'OWN_CAR_AGE': 0,
+        'PAYMENT_RATE': 0,
     }])
     response = client.post('/predict', data=data, content_type='application/json')
     data = json.loads(response.get_data(as_text=True))
@@ -31,17 +31,17 @@ def test_prediction_range(client):
 
 def test_invalid_input_format(client):
     data = json.dumps([{
-        'PAYMENT_RATE': 'bad_format_value', 
-        'EXT_SOURCE_3': 0, 
-        'EXT_SOURCE_2': 0, 
-        'DAYS_BIRTH': 0, 
-        'EXT_SOURCE_1': 0, 
-        'DAYS_EMPLOYED_PERC': 0, 
-        'ANNUITY_INCOME_PERC': 0, 
-        'INSTAL_DBD_MEAN': 0, 
-        'DAYS_LAST_PHONE_CHANGE': 0, 
-        'REGION_POPULATION_RELATIVE': 0, 
-        'ACTIVE_DAYS_CREDIT_UPDATE_MEAN': 0
+        'AMT_ANNUITY': 'bad_format_value',
+        'AMT_CREDIT': 0,
+        'AMT_GOODS_PRICE': 0,
+        'CODE_GENDER': 0,
+        'DAYS_EMPLOYED': 0,
+        'EXT_SOURCE_1': 0,
+        'EXT_SOURCE_2': 0,
+        'EXT_SOURCE_3': 0,
+        'NAME_EDUCATION_TYPE_Highereducation': 0,
+        'OWN_CAR_AGE': 0,
+        'PAYMENT_RATE': 0,
     }])
     response = client.post('/predict', data=data, content_type='application/json')
 
