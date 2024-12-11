@@ -28,6 +28,7 @@ def test_prediction_range(client):
     assert response.status_code == 200
     assert all(0 <= proba <= 1 for proba in data['probas'])
     assert all(score == 0 or score == 1 for score in data['scores'])
+    assert all(0 <= threshold <= 1 for threshold in data['thresholds'])
 
 def test_invalid_input_format(client):
     data = json.dumps([{
