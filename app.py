@@ -14,10 +14,11 @@ def predict():
     except ValidationError as e:
         return jsonify({'error': str(e)}), 400
 
-    scores, probas = predict_score(data_list)
+    scores, probas, thresholds = predict_score(data_list)
     return jsonify({
         'scores': scores.tolist(),  # Convert numpy array to list for JSON serialization
-        'probas': probas.tolist()
+        'probas': probas.tolist(),
+        'thresholds': thresholds.tolist()
     })
 
 if __name__ == '__main__':
